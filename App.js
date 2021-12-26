@@ -1,15 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, TextInput,TouchableOpacity } from 'react-native-web';
+import { Button, TextInput, TouchableOpacity } from 'react-native-web';
 
 export default function App() {
-  
-  const [result, setResult] = useState(0)
+
+  const [numberValueAlt, onChangeNumberAlt] = useState(0);
+  const [numberValuePes, onChangeNumberPes] = useState(0);
 
   const onPressClick = (event) => {
     event.preventDefault()
-    alert('erro')
+    var total = numberValueAlt.valueOf + numberValuePes.valueOf
+    alert(total)
   }
 
   return (
@@ -17,24 +19,41 @@ export default function App() {
       <Text style={styles.textCenter}>Cálculo do IMC</Text>
       <Text style={styles.textCenter}>Descubra seu índice de Massa Corporal</Text>
 
-      <View style={styles.content}>
+      <View
+        style={styles.content}>
         <View>
-          <Text style={styles.label}>Altura</Text>
-          <TextInput placeholder="Digite sua altura" keyboardType="numeric" style={styles.inputNumber} />
+          <Text
+            style={styles.label}>Altura</Text>
+          <TextInput
+            placeholder="Digite sua altura"
+            keyboardType="numeric"
+            style={styles.inputNumber}
+            onChangeText={onChangeNumberAlt}
+            value={numberValueAlt} />
         </View>
         <View>
-          <Text style={styles.label}>Peso:</Text>
-          <TextInput placeholder="Digite seu peso:" keyboardType="numeric" style={styles.inputNumber} />
+          <Text
+            style={styles.label}>Peso:</Text>
+          <TextInput
+            placeholder="Digite seu peso:"
+            keyboardType="numeric"
+            style={styles.inputNumber}
+            onChangeText={onChangeNumberPes}
+            value={numberValuePes}
+
+          />
         </View>
       </View>
 
       <TouchableOpacity
         style={styles.button}
         onPress={onPressClick}
+
       >
-        <Text style={styles.buttonText}>Calcular</Text>
+        <Text
+          style={styles.buttonText}>Calcular</Text>
       </TouchableOpacity>
-   
+
     </View>
   );
 }
@@ -73,13 +92,13 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'green',
-    paddingTop:'1rem',
-    paddingBottom:'1rem',
+    paddingTop: '1rem',
+    paddingBottom: '1rem',
     width: '300px',
     marginTop: '1rem',
   },
-  buttonText:{
+  buttonText: {
     textAlign: 'center',
-    color:'white',
+    color: 'white',
   }
 });
