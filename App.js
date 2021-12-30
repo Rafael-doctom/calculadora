@@ -5,13 +5,14 @@ import { Button, TextInput, TouchableOpacity } from 'react-native-web';
 
 export default function App() {
 
-  const [numberValueAlt, onChangeNumberAlt] = useState(0);
-  const [numberValuePes, onChangeNumberPes] = useState(0);
+  const [resultCalculation, setResultCalculation] = useState()
+  const [numberValueAlt, onChangeNumberAlt] = useState();
+  const [numberValuePes, onChangeNumberPes] = useState();
 
   const onPressClick = (event) => {
     event.preventDefault()
-    var total = numberValueAlt.valueOf + numberValuePes.valueOf
-    alert(total)
+    var resultCalculation = parseFloat(numberValueAlt) + parseFloat(numberValuePes)
+    setResultCalculation(resultCalculation)
   }
 
   return (
@@ -40,20 +41,18 @@ export default function App() {
             style={styles.inputNumber}
             onChangeText={onChangeNumberPes}
             value={numberValuePes}
-
           />
         </View>
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={onPressClick}
-
-      >
-        <Text
-          style={styles.buttonText}>Calcular</Text>
+      <TouchableOpacity style={styles.button} onPress={onPressClick}>
+        <Text style={styles.buttonText}>Calcular</Text>
       </TouchableOpacity>
-
+      <View>
+        <TouchableOpacity style={styles.button} onPress={onPressClick}>
+          <Text style={styles.result}>{resultCalculation}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -61,7 +60,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#fff',
     alignItems: 'center',
     textAlign: 'left',
     justifyContent: 'center',
@@ -88,7 +86,6 @@ const styles = StyleSheet.create({
     padding: '1rem',
     placeholderTextColor: 'gray',
     width: '300px',
-
   },
   button: {
     backgroundColor: 'green',
@@ -98,6 +95,10 @@ const styles = StyleSheet.create({
     marginTop: '1rem',
   },
   buttonText: {
+    textAlign: 'center',
+    color: 'white',
+  },
+  result: {
     textAlign: 'center',
     color: 'white',
   }
