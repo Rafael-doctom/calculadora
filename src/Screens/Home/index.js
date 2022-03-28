@@ -24,13 +24,11 @@ const Home = () => {
                 <Header />
                 <View style={styles.ViewFlex}>
                     <View>
-                        <Text style={styles.textLabel}>Altura</Text>
-                        <TextInput keyboardType='numeric' placeholder="Digite sua altura" style={styles.textInput} onChangeText={onChangeNumberAlt}
+                        <TextInput keyboardType='numeric' placeholder="Digite um número...." style={styles.textInput} onChangeText={onChangeNumberAlt}
                             value={numberValueAlt} />
                     </View>
                     <View>
-                        <Text style={styles.textLabel}>Peso</Text>
-                        <TextInput keyboardType='numeric' placeholder="Digite seu peso" style={styles.textInput} onChangeText={onChangeNumberPes}
+                        <TextInput keyboardType='numeric' placeholder="Digite outro número..." style={styles.textInput} onChangeText={onChangeNumberPes}
                             value={numberValuePes} />
                     </View>
                 </View>
@@ -39,16 +37,10 @@ const Home = () => {
                     <Text style={styles.textCenter}>Calcular IMC</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.calcResult}>
-                    <Text style={styles.textResult}>{resultCalculation}</Text>
+                    <Text style={styles.textResult}>
+                        {resultCalculation}
+                    </Text>
                 </TouchableOpacity>
-                <Text>
-                    {resultCalculation <= 18 ? <Text>Abaixo do peso</Text> : null}
-                    {resultCalculation > 24  ? <Text>Peso Normal</Text> : null}
-                    {/* {resultCalculation <= 29  ? <Text>Sobrepeso</Text> : null} */}
-                    {/* {resultCalculation <= 34  ? <Text>Obesidade grau 1</Text> : null} */}
-                    {/* {resultCalculation <= 39  ? <Text>Obesidade grau 2</Text> : null} */}
-                    {/* {resultCalculation <= 40  ? <Text>Obesidade grau 3</Text> : null} */}
-                </Text>
                 <StatusBar style="auto" />
             </View>
         </>
@@ -63,59 +55,62 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         alignItems: 'center',
-        marginTop: 70,
+        marginTop: 120,
     },
+
     title: {
         color: 'black',
         fontWeight: '700',
     },
+
     ViewFlex: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
+        marginTop: 20,
     },
+
     textLabel: {
         marginTop: 20,
     },
+
     textInput: {
         borderTopWidth: 0,
         borderRightWidth: 0,
         borderLeftWidth: 0,
         borderBottomWidth: 2,
         height: 50,
-        width: 150,
+        width: 330,
         borderColor: "gray",
-        paddingLeft: 10,
         marginTop: 10,
-        borderRadius: 5,
+        borderRadius: 0,
     },
+
     submitCalc: {
         backgroundColor: 'green',
         height: 50,
-        width: 300,
+        width: 330,
         marginTop: 5,
         borderRadius: 5,
         marginTop: 25,
     },
+
     textCenter: {
         textAlign: 'center',
         paddingTop: 15,
         color: 'white'
     },
 
-
     calcResult: {
-        backgroundColor: 'red',
-        height: 50,
-        width: 300,
-        marginTop: 5,
+        height: 40,
+        width: 330,
+        border: 0,
         borderRadius: 5,
-        marginTop: 25,
+        marginTop: 20,
     },
+
     textResult: {
         textAlign: 'center',
-        color: 'white',
-        fontSize: 35,
+        color: 'black',
+        fontSize: 30,
     }
-
-
 });

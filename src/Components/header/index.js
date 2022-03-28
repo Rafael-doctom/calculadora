@@ -3,8 +3,8 @@ import { StyleSheet, Text } from "react-native";
 const Header = () => {
     return (
         <>
-            <Text style={styles.title}>Calculo de IMC</Text>
-            <Text>Descubra seu indice de Massa Corporal</Text>
+            <Text style={styles.title}>SimpleCalculator</Text>
+            <Text>Calculadora Aritmética</Text>
         </>
     )
 }
